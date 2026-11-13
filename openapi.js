@@ -1,0 +1,124 @@
+module.exports = {
+  openapi: "3.0.3",
+  info: {
+    title: "Mi primera API en Express",
+    version: "1.0.0",
+    description: "Backend Developer Web",
+  },
+  paths: {
+    "/api/saludo": {
+      get: {
+        tags: ["General"],
+        summary: "Devuelve un saludo",
+        responses: {
+          "200": {
+            description: "Saludo devuelto correctamente",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    mensaje: {
+                      type: "string",
+                      example: "Hola desde mi API",
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+    //NIVEL 1
+    "/api/yo": {
+      get: {
+        tags: ["General"],
+        summary: "Devuelve mi nombre y carrera",
+        responses: {
+          "200": {
+            description: "Datos personales devueltos correctamente",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    nombre: {
+                      type: "string",
+                      example: "FREDI",
+                    },
+                    carrera: {
+                      type: "string",
+                      example: "Ingeniero de software",
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+    //NIVEL 2
+    "/api/edad/{anio}": {
+      get: {
+        tags: ["General"],
+        summary: "Calcula una edad aproximada a partir del año de nacimiento",
+        parameters: [
+          {
+            name: "anio",
+            in: "path",
+            required: true,
+            description: "Año de nacimiento, entre 1900 y el año actual",
+            schema: {
+              type: "integer",
+              example: 2000,
+            },
+          },
+        ],
+        responses: {
+          "200": {
+            description: "Edad aproximada calculada correctamente",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    anioNacimiento: {
+                      type: "integer",
+                      example: 2000,
+                    },
+                    edad: {
+                      type: "integer",
+                      example: 26,
+                    },
+                    aproximada: {
+                      type: "boolean",
+                      example: true,
+                    },
+                  },
+                },
+              },
+            },
+          },
+          "400": {
+            description: "El año de nacimiento no es válido",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    error: {
+                      type: "string",
+                      example: "El año debe ser un número entre 1900 y 2026.",
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+};
