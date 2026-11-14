@@ -59,7 +59,7 @@ module.exports = {
         },
       },
     },
-    //NIVEL 2
+    //NIVEL2
     "/api/edad/{anio}": {
       get: {
         tags: ["General"],
