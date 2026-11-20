@@ -15,6 +15,7 @@ module.exports = {
             description: "Saludo devuelto correctamente",
             content: {
               "application/json": {
+                example: { mensaje: "Hola desde mi API" },
                 schema: {
                   type: "object",
                   properties: {

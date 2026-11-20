@@ -1,3 +1,5 @@
+require("dotenv/config");
+
 const express = require("express");
 const swaggerUi = require("swagger-ui-express");
 const openapi = require("./openapi");
@@ -43,4 +45,8 @@ app.get("/api/edad/:anio", (req, res) => {
   });
 });
 
-app.listen(PORT, () => console.log(`API lista en el puerto ${PORT}`));
+if (require.main === module) {
+  app.listen(PORT, () => console.log(`API lista en el puerto ${PORT}`));
+}
+
+module.exports = app;
