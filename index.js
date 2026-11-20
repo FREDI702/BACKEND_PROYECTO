@@ -6,6 +6,10 @@ const PORT = process.env.PORT || 3000;
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openapi));
 
+app.get("/", (req, res) => {
+  res.redirect("/api-docs");
+});
+
 app.get("/api/saludo", (req, res) => {
   res.json({ mensaje: "Hola desde mi API" });
 });
